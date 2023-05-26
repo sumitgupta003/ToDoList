@@ -1,0 +1,33 @@
+<%- include("header") -%>
+
+    <h1 id="heads"><span id="head">ToDoList</span></h1>
+    <div class="merge">
+        <h2 class="date">
+            <%= cur_day %>
+        </h2>
+
+        <% listdata.forEach(element=> { %>
+            <form action="/delete" method="post">
+                <div class="item">
+
+                    <input class="checked" type="checkbox" name="checkbox" value="<%= element._id %>" onchange="this.form.submit()">
+                    <p class="decor">
+                        <%= element.name %>
+                    </p>
+
+                </div>
+                <input type="hidden" name="listName" value="<%= cur_day %>"></input>
+            </form>
+            <% }); %>
+
+
+
+                <form class="form" action="/" method="post">
+                    <input class="form_input" type="text" name="newItem" placeholder="Add new Item" autocomplete="off">
+                    <button type="submit" name="list" value=<%=cur_day %>>+</button>
+                </form>
+    </div>
+
+
+    <%- include("footer") -%>
+
